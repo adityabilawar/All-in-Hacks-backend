@@ -1,13 +1,8 @@
 const mongoose = require('mongoose');
 
 const tokensSchema = new mongoose.Schema({
-	userId: String,
-	tokens: [{
-        _id: string,
-        user: string,
-        expire: timenumber //(time as a number)
-    }]
-
+    user: String,
+    expire: Number
 });
 
 const tokens = mongoose.model("leads", tokensSchema);

@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
-const leadsDataSchema = new mongoose.Schema({
-	userId: String,
-	leads: [{
-        _id: string,
-        firstName: string,
-        lastName: string,
-        company: string,
-        position: string,
-        message: string //(generated personalized message)
-    }]
-
+const leadSchema = new mongoose.Schema({
+    name: String,
+    company: String,
+    position: String,
+    message: String
 });
 
-const leads = mongoose.model("leads", leadsDataSchema);
+const lead = mongoose.model('lead', leadSchema);
 
-module.exports = leads;
+module.exports = lead;
