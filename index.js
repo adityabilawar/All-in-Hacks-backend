@@ -25,6 +25,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+/*frontend sends csv with all info, chat gpt reads all rows of csv to make a prompt and puts response as new column for each row
+then sends data to mongodb to be stored */
 app.post("/create-message", async (req, res) => {
   try {
     const { prompt } = req.body;
