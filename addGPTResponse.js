@@ -2,6 +2,7 @@
 const fs = require('fs')
 const csv = require('csvtojson');
 const { Parser } = require('json2csv');
+require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 const result = [];
 var dataArray = [];
@@ -40,7 +41,7 @@ const configuration = new Configuration({
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
       });
-      console.log(response.data.choices[0].text);
+    console.log(response.data.choices[0].text);
     leads[0].gptResponse = response.data.choices[0].text;
 
     //save the csv 
