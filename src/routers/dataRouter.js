@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/upload', upload.any(), async (req, res) => {
-	console.log('data', req.body);
+	console.log('data', req.files[0]);
 	res.status(200).send('ok');
 });
 
