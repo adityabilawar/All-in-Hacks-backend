@@ -19,7 +19,7 @@ async function connect() {
     }
 }
 
-connect();
+(async() => { connect() ; })();
 
 const configuration = new Configuration({
   apiKey: process.env.OPEN_AI_KEY,
