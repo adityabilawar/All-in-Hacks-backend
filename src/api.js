@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const mongoose = require('mongoose')
 require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
@@ -59,8 +60,11 @@ app.post("/create-message", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+// app.listen(port, () => console.log(`Server listening on port ${port}`));
 
-app.use("/data", require("./routers/dataRouter"));
+app.use("/.netlify/functions/api", require("./routers/dataRouter"));
+
+module.exports = app;
+module.exports.handler = serverless(app);
