@@ -9,7 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+	origin: [
+		'http://localhost:3000',
+    'https://all-in-hacks-frontend.vercel.app',
+    'http://all-in-hacks-frontend.vercel.app'
+	]
+}));
 
 const uri = `mongodb+srv://adityabilawar:${process.env.mongo_api}@leadscluster.moi2vx9.mongodb.net/?retryWrites=true&w=majority`
 
