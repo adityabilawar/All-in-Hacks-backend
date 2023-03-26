@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
 const Token = require('../models/tokenDataModel');
-const upload = (require('multer'))();
+const upload = (require('multer'))({ dest: 'tmp' });
 
 router.post('/login', async (req, res) => {
 	try {
@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
 	}
 });
 
-router.post('/upload', upload.none(), async (req, res) => {
+router.post('/upload', upload.any(), async (req, res) => {
 	console.log('data', req.body);
 	res.status(200).send('ok');
 });
