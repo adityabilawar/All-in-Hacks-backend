@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require('mongoose')
 require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const uri = `mongodb+srv://adityabilawar:${process.env.mongo_api}@leadscluster.moi2vx9.mongodb.net/?retryWrites=true&w=majority`
 

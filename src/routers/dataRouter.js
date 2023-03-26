@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
 const Token = require('../models/tokenDataModel');
+const upload = (require('multer'))();
 
 router.post('/login', async (req, res) => {
 	try {
@@ -52,6 +53,11 @@ router.post('/login', async (req, res) => {
 		console.error(err);
 		res.status(500).send();
 	}
+});
+
+router.post('/upload', upload.none(), async (req, res) => {
+	console.log('data', req.body);
+	res.status(200).send('ok');
 });
 
 module.exports = router;
