@@ -57,18 +57,75 @@ router.post('/login', async (req, res) => {
 	}
 });
 
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+    apiKey: process.env.OPEN_AI_KEY,
+  });
+const openai = new OpenAIApi(configuration);
+const LETTER_TYPES = ['a linkedin invite message', 'an introduction email', '5 Coffee Chat Questions']
+
 router.post('/upload', upload.any(), async (req, res) => {
 	try {
 		const path = req.files[0].path;
+		const { name } = req.body;
 		const workbook = xlsx.readFile(path);
 		var sheet_name_list = workbook.SheetNames;
 		const jsonData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-		console.log(jsonData);
-		res.status(200).send('ok');
+		const resultData = [];
+		for(let i = 0; i < jsonData.length; i++) {
+			const userName = jsonData[i].Name;
+			const userPosition = jsonData[i].Position;
+			const userCompany = jsonData[i].Company;
+
+			resultData.push(jsonData[i]);
+
+			// linkedin invite message
+			const response1 = await openai.createCompletion({
+				model: "text-davinci-003",
+				prompt: `
+					Hi! Can you write me a 300 character linkedin invite message on behalf of ${name} to the ${userPosition} of the company ${userCompany} whos name is ${userName} explaining that you want to help provide value to their business.
+				`,
+				max_tokens: 3000,
+				temperature: 0,
+				top_p: 1.0,
+				frequency_penalty: 0.0,
+				presence_penalty: 0.0,
+			});
+			resultData[i].gptResponse1 = response1.data.choices[0].text;
+
+			// introduction email
+			const response2 = await openai.createCompletion({
+				model: "text-davinci-003",
+				prompt: `
+						Write me a personlized introduction email to ${userName}, who has the ${userPosition} position at the company ${userCompany} on behalf of ${name} explaining that I want to help provide value to their business & request a phone call
+					  `,
+				max_tokens: 3000,
+				temperature: 0,
+				top_p: 1.0,
+				frequency_penalty: 0.0,
+				presence_penalty: 0.0,
+			});
+			resultData[i].gptResponse2 = response2.data.choices[0].text;
+
+			// coffee chat questions
+			const response3 = await openai.createCompletion({
+				model: "text-davinci-003",
+				prompt: `Write me 5 coffee chat questions on behalf of ${name} to ask to ${userName} that has the ${userPosition} position at the company ${userCompany}.`,
+				max_tokens: 3000,
+				temperature: 0,
+				top_p: 1.0,
+				frequency_penalty: 0.0,
+				presence_penalty: 0.0,
+			});
+			resultData[i].gptResponse3 = response3.data.choices[0].text;
+		}
+		console.log(resultData);
+		res.status(200).json(resultData);
 	} catch(err) {
 		console.error(err);
-		res.status(500).send();
+		res.status(500).send(err);
 	}
+	fs.unlinkSync(req.files[0].path);
 });
 
 module.exports = router;
