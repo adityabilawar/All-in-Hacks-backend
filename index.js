@@ -4,7 +4,6 @@ require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
-
 app.use(express.json());
 
 const uri = `mongodb+srv://adityabilawar:${process.env.mongo_api}@leadscluster.moi2vx9.mongodb.net/?retryWrites=true&w=majority`
