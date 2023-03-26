@@ -1,14 +1,28 @@
-"firstName","lastName","Company","Position","linkedinURL","gptResponse"
+"firstName","lastName","Company","Position","linkedinURL","gptResponse","gptResponse2","gptResponse3"
 "Elon","Musk","Tesla","CTO","http://linkedin.com/","
-                Dear Mr. Musk,
+Dear Elon Musk, 
 
-My name is Aditya Bilawar and I am the CEO of a company that specializes in automation technology. I am writing to you today to introduce you to our product, which can automate the process of developing Tesla car screens.
+I am Aditya Bilawar, the CEO of SalesForce, an email marketing company. I am writing to you to introduce myself and to offer my services to Tesla. I believe that my expertise in email marketing can help provide value to your business. 
 
-I believe our product can help you save time and money, while also improving the quality of your car screens. We have a proven track record of success with other companies, and I am confident that our product can help you achieve your goals.
+At SalesForce, we specialize in creating effective email campaigns that are tailored to the needs of our clients. We have a proven track record of success in helping businesses reach their goals. Our team of experienced professionals is dedicated to providing the best possible service to our clients. 
 
-I would love to discuss the potential of our product with you in more detail. Please let me know if you would be interested in scheduling a meeting.
+I am confident that my team and I can help Tesla reach its goals. I would be more than happy to discuss our services in more detail and answer any questions you may have. I look forward to hearing from you. 
 
-Thank you for your time and consideration.
+Sincerely, 
+Aditya Bilawar 
+CEO, SalesForce","
+Dear Mr. Musk,
+
+My name is [Name], and I am writing to introduce myself and express my interest in providing value to your business. I am a [profession] with [years] of experience in [relevant field]. I am passionate about [relevant field] and believe that my skills and knowledge could be of great benefit to your organization.
+
+I am confident that I could help your business reach its goals and objectives. I am eager to discuss how I can contribute to your success and would be grateful for the opportunity to speak with you further.
+
+I look forward to hearing from you and thank you for your time and consideration.
 
 Sincerely,
-Aditya Bilawar"
+[Name]","
+1. What inspired you to pursue a career in the tech industry?
+2. What do you think are the most important elements of a successful email marketing campaign?
+3. What advice would you give to someone just starting out in the email marketing space?
+4. What do you think are the biggest challenges facing email marketers today?
+5. What do you think is the most important thing to keep in mind when crafting an email marketing message?"
