@@ -56,7 +56,9 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/upload', upload.any(), async (req, res) => {
-	console.log('data', req.files[0]);
+	let data = fs.createReadStream(req.files[0].path,'utf8');
+	console.log(data);
+
 	res.status(200).send('ok');
 });
 
