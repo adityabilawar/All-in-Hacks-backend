@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ parameterLimit: 100000, limit: '50mb', extended: true }));
 app.use(cors({
 	origin: [
 		'http://localhost:3000',
