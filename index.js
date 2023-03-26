@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
 	origin: [
 		'http://localhost:3000',
-    'https://all-in-hacks-frontend.vercel.app/'
+    'https://all-in-hacks-frontend.vercel.app'
 	]
 }));
 
