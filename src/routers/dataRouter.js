@@ -77,8 +77,6 @@ router.post('/upload', upload.any(), async (req, res) => {
 			const userPosition = jsonData[i].Position;
 			const userCompany = jsonData[i].Company;
 
-			resultData.push(jsonData[i]);
-
 			// linkedin invite message
 			const response1 = await openai.createCompletion({
 				model: "text-davinci-003",
@@ -91,7 +89,12 @@ router.post('/upload', upload.any(), async (req, res) => {
 				frequency_penalty: 0.0,
 				presence_penalty: 0.0,
 			});
-			resultData[i].gptResponse1 = response1.data.choices[0].text;
+			resultData.push({
+				name: userName,
+				position: userPosition,
+				company: userCompany,
+				res: response1.data.choices[0].text
+			});
 
 			// introduction email
 			const response2 = await openai.createCompletion({
