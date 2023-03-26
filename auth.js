@@ -1,4 +1,4 @@
-const Token = require('./models/tokenDataModel');
+const Token = require('./src/models/tokenDataModel');
 
 export const isUserAuth = async(token) => {
 	const userAuth = await Token.findOne({ _id: token });

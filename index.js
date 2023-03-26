@@ -63,4 +63,4 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 
-app.use("/api/", require("./routers/dataRouter"));
+app.use("/api/", require("./src/routers/dataRouter"));
