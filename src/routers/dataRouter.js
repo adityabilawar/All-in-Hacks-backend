@@ -2,6 +2,8 @@ const router = require('express').Router();
 const User = require('../models/userModel');
 const Token = require('../models/tokenDataModel');
 const upload = (require('multer'))({ dest: 'tmp' });
+const fs = require('fs');
+const xlsx = require('xlsx');
 
 router.post('/login', async (req, res) => {
 	try {
@@ -56,10 +58,17 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/upload', upload.any(), async (req, res) => {
-	let data = fs.createReadStream(req.files[0].path,'utf8');
-	console.log(data);
-
-	res.status(200).send('ok');
+	try {
+		const path = req.files[0].path;
+		const workbook = xlsx.readFile(path);
+		var sheet_name_list = workbook.SheetNames;
+		const jsonData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+		console.log(jsonData);
+		res.status(200).send('ok');
+	} catch(err) {
+		console.error(err);
+		res.status(500).send();
+	}
 });
 
 module.exports = router;
