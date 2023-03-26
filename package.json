@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src",
+    "start": "node src/api.js",
     "dev": "nodemon index.js"
   },
   "repository": {
@@ -28,9 +27,7 @@
     "json-2-csv": "^4.0.0",
     "json2csv": "^6.0.0-alpha.2",
     "mongoose": "^7.0.2",
-    "netlify-lambda": "^2.0.16",
-    "openai": "^3.2.1",
-    "serverless-http": "^3.2.0"
+    "openai": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
