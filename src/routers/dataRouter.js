@@ -93,7 +93,8 @@ router.post('/upload', upload.any(), async (req, res) => {
 				name: userName,
 				position: userPosition,
 				company: userCompany,
-				res: response1.data.choices[0].text
+				res: response1.data.choices[0].text,
+				type: 'Linkedin Invite'
 			});
 
 			// introduction email
@@ -112,7 +113,8 @@ router.post('/upload', upload.any(), async (req, res) => {
 				name: userName,
 				position: userPosition,
 				company: userCompany,
-				res: response2.data.choices[0].text
+				res: response2.data.choices[0].text,
+				type: 'Intro Email'
 			});
 
 			// coffee chat questions
@@ -129,7 +131,8 @@ router.post('/upload', upload.any(), async (req, res) => {
 				name: userName,
 				position: userPosition,
 				company: userCompany,
-				res: response3.data.choices[0].text
+				res: response3.data.choices[0].text,
+				type: 'Coffee Chat'
 			});
 		}
 		console.log(resultData);
