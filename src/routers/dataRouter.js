@@ -108,7 +108,12 @@ router.post('/upload', upload.any(), async (req, res) => {
 				frequency_penalty: 0.0,
 				presence_penalty: 0.0,
 			});
-			resultData[i].gptResponse2 = response2.data.choices[0].text;
+			resultData.push({
+				name: userName,
+				position: userPosition,
+				company: userCompany,
+				res: response2.data.choices[0].text
+			});
 
 			// coffee chat questions
 			const response3 = await openai.createCompletion({
@@ -120,7 +125,12 @@ router.post('/upload', upload.any(), async (req, res) => {
 				frequency_penalty: 0.0,
 				presence_penalty: 0.0,
 			});
-			resultData[i].gptResponse3 = response3.data.choices[0].text;
+			resultData.push({
+				name: userName,
+				position: userPosition,
+				company: userCompany,
+				res: response3.data.choices[0].text
+			});
 		}
 		console.log(resultData);
 		res.status(200).json(resultData);
