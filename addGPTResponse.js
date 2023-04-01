@@ -34,7 +34,7 @@ const configuration = new Configuration({
     const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `
-                Hi! Can you write me a 300 character ${letterType} on behalf of ${user} from ${userCompanyName}, a ${userCompanyDescription} comapny, to the ${position} of the company ${company} whos name is ${firstName} ${lastName} 
+                Hi! Can you write me a 300 character ${letterType} on behalf of ${user} from ${userCompanyName}, a ${userCompanyDescription} company, to the ${position} of the company ${company} whos name is ${firstName} ${lastName} 
                 explaining that you want to help provide value to their business.
               `,
         max_tokens: 3000,
